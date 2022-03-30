@@ -44,26 +44,38 @@ void Running() {
   Serial.print((float)t+273);
   Serial.println("K");
     
-  if(t > 0 && t <= 16){
+  if(t >= 0 && t <= 16){
      digitalWrite(LedMerah, LOW);
      digitalWrite(LedBiru, LOW);
      digitalWrite(LedHijau, HIGH);
      Serial.println("Suhu Dingin");
-  }
+    }
+    
+  else if (t < 0 && t > 16){
+    digitalWrite(LedHijau, LOW);
+    }
 
   else if (t >= 25 && t <= 37){
      digitalWrite(LedMerah, LOW);
      digitalWrite(LedBiru, HIGH);
      digitalWrite(LedHijau, LOW);
      Serial.println("Suhu Normal");
-  }
+    }
+
+  else if(t < 25 && t > 37){
+    digitalWrite(LedBiru, LOW);
+    }
   
   else if (t >= 38 && t <= 100){
     digitalWrite(LedMerah, HIGH);
     digitalWrite(LedBiru, LOW);
     digitalWrite(LedHijau, LOW);
     Serial.println("Suhu Panas");
-  }
+    }
+
+  else if (t < 38 && t > 100){
+    digitalWrite(LedMerah, LOW);
+    }
  }
 
 void loop() {
